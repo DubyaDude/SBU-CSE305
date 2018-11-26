@@ -81,7 +81,11 @@ WSGI_APPLICATION = 'movieProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydatabase', 
+        'NAME': 'ushafiq_cse305',
+        'USER': 'ushafiq',
+        'PASSWORD': 'M3Lt9bzKrt',
+        'HOST': 'cse305.hosted.nfoservers.com',
+        'PORT': '3306',
     }
 }
 
