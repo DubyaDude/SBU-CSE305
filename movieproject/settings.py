@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'movieProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ushafiq_cse305',
         'USER': 'ushafiq',
         'PASSWORD': 'M3Lt9bzKrt',
