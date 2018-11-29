@@ -1112,9 +1112,18 @@ section
 .footer
 {
 	display: block;
-	position: relative;
+	position: fixed;
+	bottom: 0px;
 	width: 100%;
 }
+
+.footer_home
+{
+	display: block;
+	position: adaptive;
+	width: 100%;
+}
+
 .footer_phone
 {
 	position: absolute;
