@@ -872,7 +872,23 @@ section
 	transform: translate(-50%, -50%);
 	width: 100%;
 }
+.about_image_right
+{
+	position: absolute;
+	top: 50%;
+	left: 80%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
 .about_image img
+{
+	max-width: 100%;
+}
+.about_image_right img
 {
 	max-width: 100%;
 }

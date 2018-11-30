@@ -2,22 +2,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Movie</title>
+<title>Results</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="cse305 project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{% static '/bootstrap-4.1.2/bootstrap.min.css' %}" >
+<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css" >
 
 
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/about.css">
-<link rel="stylesheet" type="text/css" href="/about_responsive.css">
-<link rel="stylesheet" type="text/css" href="/main_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/about.css">
+<link rel="stylesheet" type="text/css" href="styles/about_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 </head>
 <body>
 
@@ -30,111 +30,66 @@
 			<div class="logo"><a href="home.html">Home</a></div>
 	</header>
 
-	<!-- About -->
 
 	<div class="about">
 		<div class="container">
 			<div class="row row-lg-eq-height">
-				
 				<!-- About Image -->
 				<div class="col-lg-6 order-lg-1 order-2">
-					<div class="about_image d-flex flex-column align-items-center justify-content-center">
-						<img src="images/movieposter.png" alt="">
+					<div class="about_image_right d-flex flex-column align-items-center justify-content-center">
+						<img src="images/movieposter-small.png" alt="">
 					</div>
 				</div>
 
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-					{% for movie in movies %}
 						<div class="section_title"><h2>{{movie.name}}</h2></div>
-						<div class="about_text">
-							<p>Length, Genre {{movie.duration}}{{movie.genre}}</p>
-							<p>Description</p>
-							<p>Director(s):</p>
-							<p>Writer(s):</p>
-							<p>Production Company(s) {{movie.prod_id}}</p>
-							<p>Release Date {{movie.release_date}}</p>
-						</div>
-					{% endfor %}
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
 
-	<!-- Team -->
-
-	<div class="team">
+	<div class="about">
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<div class="section_title"><h2>Reviews | Rating</h2></div>
-					</div>
-				</div>
-			</div>
-			<div class="row team_row">
-				
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
+			<div class="row row-lg-eq-height">
+				<!-- About Image -->
+				<div class="col-lg-6 order-lg-1 order-2">
+					<div class="about_image_right d-flex flex-column align-items-center justify-content-center">
+						<img src="images/movieposter-small.png" alt="">
 					</div>
 				</div>
 
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
+				<!-- About Content -->
+				<div class="col-lg-6 order-lg-2 order-1">
+					<div class="about_content">
+						<div class="section_title"><h2>{{movie.name}}</h2></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<div class="about">
+		<div class="container">
+			<div class="row row-lg-eq-height">
+				<!-- About Image -->
+				<div class="col-lg-6 order-lg-1 order-2">
+					<div class="about_image_right d-flex flex-column align-items-center justify-content-center">
+						<img src="images/movieposter-small.png" alt="">
+					</div>
+				</div>
+
+				<!-- About Content -->
+				<div class="col-lg-6 order-lg-2 order-1">
+					<div class="about_content">
+						<div class="section_title"><h2>{{movie.name}}</h2></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Footer -->
 
 	<footer class="footer">
