@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +7,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="cse305 project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static '/bootstrap-4.1.2/bootstrap.min.css' %}" >
+
+
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/about.css">
-<link rel="stylesheet" type="text/css" href="styles/about_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="/about.css">
+<link rel="stylesheet" type="text/css" href="/about_responsive.css">
+<link rel="stylesheet" type="text/css" href="/main_styles.css">
 </head>
 <body>
 
@@ -43,16 +46,17 @@
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-						<div class="section_title"><h2>Movie Name (Year)</h2></div>
+					{% for movie in movies %}
+						<div class="section_title"><h2>{{movie.name}}</h2></div>
 						<div class="about_text">
-							<p>Length, Genre</p>
+							<p>Length, Genre {{movie.duration}}{{movie.genre}}</p>
 							<p>Description</p>
-							<p>Release Date</p>
 							<p>Director(s):</p>
 							<p>Writer(s):</p>
-							<p>Production Company(s)</p>
-							<p>Release Date</p>
+							<p>Production Company(s) {{movie.prod_id}}</p>
+							<p>Release Date {{movie.release_date}}</p>
 						</div>
+					{% endfor %}
 					</div>
 				</div>
 

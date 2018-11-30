@@ -43,12 +43,14 @@
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-						<div class="section_title"><h2>Production Company Name</h2></div>
+					{% for prod in productions %}
+						<div class="section_title"><h2>{{prod.name}}</h2></div>
 						<div class="about_text">
-							<p>Address</p>
-							<p>Phone#</p>
-							<p>Email</p>
+							<p>Address {{prod.address}}</p>
+							<p>Phone# {{prod.phone_number}}</p>
+							<p>Email {{prod.email}}</p>
 						</div>
+					{% endfor %}
 					</div>
 				</div>
 

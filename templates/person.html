@@ -43,14 +43,16 @@
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-						<div class="section_title"><h2>Person Name</h2></div>
+					{% for person in persons %}
+						<div class="section_title"><h2>{{person.first_name}}{{person.last_name}}</h2></div>
 						<div class="about_text">
-							<p>Age (DOB)</p>
+							<p>Age (DOB) {{person.dob}}</p>
 							<p>Involved In:</p>
 							<p>Movie | Role</p>
 							<p>Movie | Role</p>
 							<p>Movie | Role</p>
 						</div>
+					{% endfor %}
 					</div>
 				</div>
 
