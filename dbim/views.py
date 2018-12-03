@@ -1,19 +1,40 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Movie,Person,ProductionCompany
+from .models import Movie,Person,ProductionCompany,Roles,Reviewer,Review,MovieReviews
 # Create your views here.
 
 def homePage(request):
 	return render(request,'home.html')
 
 def moviePage(request,id):
-   	movies = Movie.objects.raw('SELECT * FROM dbim_movie WHERE id = ' + str(id))
-   	context = {'movies':movies} 
+   	movie = Movie.objects.raw('SELECT * FROM dbim_movie WHERE id = ' + str(id))
+   	a = 'Actor'
+   	d = 'Director'
+   	w = 'Writer'
+   	actor = Person.objects.raw('SELECT p.id, p.first_name, p.last_name FROM dbim_person p,dbim_roles r WHERE r.movie_id_id = ' + str(id) + ' and r.person_id_id = p.id and r.role = %s',[a])
+   	director = Person.objects.raw('SELECT p.id, p.first_name, p.last_name FROM dbim_person p,dbim_roles r WHERE r.movie_id_id = ' + str(id) + ' and r.person_id_id = p.id and r.role = %s',[d])
+   	writer = Person.objects.raw('SELECT p.id, p.first_name, p.last_name FROM dbim_person p,dbim_roles r WHERE r.movie_id_id = ' + str(id) + ' and r.person_id_id = p.id and r.role = %s',[w])
+   	production = ProductionCompany.objects.raw('SELECT pc.id, pc.name FROM dbim_productioncompany pc,dbim_movie m WHERE m.id = ' + str(id) + ' and m.prod_id_id = pc.id')
+   	rating = Review.objects.raw('SELECT r.id,r.title, r.content, r.rating FROM dbim_review r, dbim_moviereviews mr WHERE mr.movie_id_id = ' + str(id) + ' and mr.review_id_id = r.id')
+   	username = Reviewer.objects.raw('SELECT rer.id,rer.username FROM dbim_review r,dbim_reviewer rer,dbim_moviereviews mr WHERE mr.movie_id_id = ' + str(id) + ' and r.reviewer_id_id = rer.id and mr.review_id_id = r.id')
+   	context = {'movies':movie,
+   				'actors':actor,
+   				'directors':director,
+   				'writers':writer,
+   				'productions':production,
+   				'ratings':rating,
+   				'username':username
+   				} 
+
    	return render(request,'movie.html',context)
 
 def personPage(request,id):
 	persons = Person.objects.raw('SELECT * FROM dbim_person WHERE id = ' + str(id))
-	context = {'persons':persons}
+	movieRole = Roles.objects.raw('SELECT r.person_id_id, r.movie_id_id, r.role, m.id, m.name FROM dbim_movie m,dbim_roles r WHERE r.person_id_id = ' + str(id) + ' and r.movie_id_id = m.id ')
+	context = {'persons':persons,
+				'movieRoles':movieRole
+				}
+
 	return render(request,'person.html',context)
 
 def productionPage(request,id):
@@ -25,3 +46,6 @@ def yearPage(request,year):
 	movies = Movie.objects.raw('SELECT * FROM dbim_movie WHERE year = ' + str(year))
 	context = {'movies':movies}
 	return render(request,'movie.html',context)
+
+# def resultsPage(request):
+# 	movies = Movie.objects

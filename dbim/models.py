@@ -13,6 +13,7 @@ class ProductionCompany(models.Model):
 class Movie(models.Model):
     name = models.CharField(max_length = 200)
     genre = models.CharField(max_length = 500)
+    description = models.TextField(default = 'Best movie ever')
     duration = models.TimeField()
     release_date = models.IntegerField()
     prod_id = models.ForeignKey(ProductionCompany, on_delete = models.CASCADE)
@@ -53,15 +54,14 @@ class MovieReviews(models.Model):
 		unique_together = (("movie_id", "review_id"),)
 
 '''
-TODO: Need reviews in the database.
+complex query in moviePage to query name of director and writer (use Roles Table)
+complex query in personPage to query Movie and Role (use Roles Table)
 
 
 
-
-
-
-
-
+You have a text box on some page and when you click it, it sends a post request. 
+Then in that method for that path in views.py you do an if check to see if request was a post, 
+and if it was you can extract their input and perform query and the  redirect to a results page
 
 
 user will type in a string to the search bar, store that string, use that 

@@ -50,13 +50,36 @@
 						<div class="section_title"><h2>{{movie.name}}</h2></div>
 						<div class="about_text">
 							<p>Length, Genre {{movie.duration}}{{movie.genre}}</p>
-							<p>Description</p>
-							<p>Director(s):</p>
-							<p>Writer(s):</p>
-							<p>Production Company(s) {{movie.prod_id}}</p>
+							<p>Description {{movie.description}}</p> 
 							<p>Release Date {{movie.release_date}}</p>
 						</div>
 					{% endfor %}
+
+					<p>Production Company(s)</p>
+					{% for pc in productions %}
+					<ul><a href = "/production/{{pc.id}}">
+					{{pc.name}}</a></ul>
+					{% endfor %}
+
+
+					<p>Directors(s):</p>
+					{% for d in directors %}
+					<ul><a href = "/person/{{d.id}}">
+					{{d.first_name}} {{d.last_name}}</a></ul>
+					{% endfor %}
+
+					<p>Writer(s):</p>
+					{% for w in writers %}
+					<ul><a href = "/person/{{w.id}}">
+					{{w.first_name}} {{w.last_name}}</a></ul>
+					{% endfor %}
+
+
+					<p>Actors:</p>
+					{% for c in actors %}
+					<ul><a href = "/person/{{c.id}}">{{c.first_name}} {{c.last_name}}</a></ul>
+					{% endfor %}
+
 					</div>
 				</div>
 
@@ -78,60 +101,27 @@
 			<div class="row team_row">
 				
 				<!-- Team Item -->
+				
 				<div class="col-xl-3 col-md-6">
 					<div class="team_item">
 						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
+						{% for r in ratings %}
+							<div class="team_name">Rating | Review Title {{r.rating}} stars {{r.title}}</div>
+							<div class="team_title">{{r.content}} </div>
+							{% for name in username %}
+								{% if name.id == r.reviewer_id_id %}
+								<div class="team_title">-{{name.username}}</div>
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
 
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
 
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
 						</div>
 					</div>
 				</div>
-
+				
 				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team Item -->
-				<div class="col-xl-3 col-md-6">
-					<div class="team_item">
-						<div class="team_content text-center">
-							<div class="team_name">Rating | Review Title</div>
-							<div class="team_title">Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review Review </div>
-							<div class="team_title">-Username</div>
-						</div>
-					</div>
-				</div>
-			</div>
+				
 		</div>
 	</div>
 
