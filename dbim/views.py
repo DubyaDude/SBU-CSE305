@@ -1,10 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie,Person,ProductionCompany,Roles,Reviewer,Review,MovieReviews
+from .forms import ResultForm
 # Create your views here.
 
 def homePage(request):
-	return render(request,'home.html')
+	if request.method == 'POST':
+		form = ResultForm(request.POST)
+		if form.is_valid():
+			search_input = form.cleaned_data['search_input']
+			search_type = form.cleaned_data['search_type']
+			context = {'search_input':search_input,
+					'search_type':search_type}
+			return HttpResponseRedirect('/searchresults/' + search_type + '/' + search_input)
+	else:
+		form = ResultForm()
+
+	return render(request, 'home.html', {'form': form})
 
 def moviePage(request,id):
    	movie = Movie.objects.raw('SELECT * FROM dbim_movie WHERE id = ' + str(id))
@@ -46,6 +58,12 @@ def yearPage(request,year):
 	movies = Movie.objects.raw('SELECT * FROM dbim_movie WHERE year = ' + str(year))
 	context = {'movies':movies}
 	return render(request,'movie.html',context)
+
+def searchPage(request,search_type,search_input):
+	context = {'search_input':search_input,
+					'search_type':search_type}
+	
+	return render(request,'searchresults.html',context)
 
 # def resultsPage(request):
 # 	movies = Movie.objects

@@ -32,8 +32,11 @@
 							<div class="home_title">Know your movies</div>
 							<div class="domain_search">
 								<div class="domain_search_background"></div>
-								<form action="#" class="domain_search_form" id="domain_search_form">
-									<input type="text" class="domain_search_input" placeholder="" required="required">
+								<form action="/home/" method='POST' class="domain_search_form" id="domain_search_form">
+									 {% csrf_token %}
+    								 {{ form }}
+    								 <input type="submit" value="Submit">
+									<!--<input type="text" name="searchbar_input" class="domain_search_input" placeholder="" required="required">
 									<div class="domain_search_dropdown d-flex flex-row align-items-center justify-content-center">
 										<div class="domain_search_selected">Title</div>
 										<ul>
@@ -43,6 +46,7 @@
 										</ul>
 									</div>
 									<button class="domain_search_button">search</button>
+									-->
 								</form>
 							</div>
 						</div>

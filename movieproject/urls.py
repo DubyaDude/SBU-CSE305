@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dbim.views import homePage, moviePage, personPage, productionPage, yearPage
+from dbim.views import homePage, moviePage, personPage, productionPage, yearPage, searchPage
 
 
 
@@ -26,5 +26,6 @@ urlpatterns = [
     path('movies/year/<int:year>',yearPage),
     path('person/<int:id>',personPage),
     path('production/<int:id>',productionPage),
+    path('searchresults/<str:search_type>/<str:search_input>',searchPage)
     
 ]
