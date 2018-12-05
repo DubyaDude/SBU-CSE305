@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie,Person,ProductionCompany,Roles,Reviewer,Review,MovieReviews
 from .forms import ResultForm
+from datetime import timedelta
 # Create your views here.
 
 def homePage(request):
@@ -29,6 +30,7 @@ def moviePage(request,id):
    	production = ProductionCompany.objects.raw('SELECT pc.id, pc.name FROM dbim_productioncompany pc,dbim_movie m WHERE m.id = ' + str(id) + ' and m.prod_id_id = pc.id')
    	rating = Review.objects.raw('SELECT r.id,r.title, r.content, r.rating FROM dbim_review r, dbim_moviereviews mr WHERE mr.movie_id_id = ' + str(id) + ' and mr.review_id_id = r.id')
    	username = Reviewer.objects.raw('SELECT rer.id,rer.username FROM dbim_review r,dbim_reviewer rer,dbim_moviereviews mr WHERE mr.movie_id_id = ' + str(id) + ' and r.reviewer_id_id = rer.id and mr.review_id_id = r.id')
+   	
    	context = {'movies':movie,
    				'actors':actor,
    				'directors':director,
@@ -36,7 +38,8 @@ def moviePage(request,id):
    				'productions':production,
    				'ratings':rating,
    				'username':username
-   				} 
+   				}
+
 
    	return render(request,'movie.html',context)
 
@@ -54,11 +57,6 @@ def productionPage(request,id):
 	context = {'productions':productions}
 	return render(request,'production.html',context)
 
-def yearPage(request,year):
-	movies = Movie.objects.raw('SELECT * FROM dbim_movie WHERE year = ' + str(year))
-	context = {'movies':movies}
-	return render(request,'movie.html',context)
-
 def searchPage(request,search_type,search_input):
 	searchy = []
 	#if search_type == title, person,year
@@ -70,15 +68,13 @@ def searchPage(request,search_type,search_input):
 
 		if ' ' in search_input:
 			name = search_input.split()
-			print(name[0])
-			print(name[1])
 		
 			first = name[0]
-			second = name[1]
+			second = name[1] + '%'
 
 			
 			#if there is a name[1] then name[0],name[1]%
-			searchy = Person.objects.raw('SELECT * FROM dbim_person WHERE first_name LIKE %s and last_name LIKE %s',[first,second])
+			searchy = Person.objects.raw("SELECT * FROM dbim_person dp WHERE dp.first_name = %s and dp.last_name LIKE %s",[str(first),str(second)])
 		
 		#if there is no name[1] then name[0]%
 		else:

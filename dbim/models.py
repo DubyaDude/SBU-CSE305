@@ -13,8 +13,8 @@ class ProductionCompany(models.Model):
 class Movie(models.Model):
     name = models.CharField(max_length = 200)
     genre = models.CharField(max_length = 500)
-    description = models.TextField(default = 'Best movie ever')
-    duration = models.TimeField()
+    description = models.TextField()
+    duration = models.CharField(max_length = 10)
     release_date = models.IntegerField()
     prod_id = models.ForeignKey(ProductionCompany, on_delete = models.CASCADE)
 
@@ -52,7 +52,4 @@ class MovieReviews(models.Model):
 
 	class Meta:
 		unique_together = (("movie_id", "review_id"),)
-
-
-
 
