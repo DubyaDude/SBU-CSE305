@@ -44,9 +44,28 @@
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-						{{search_input}}
-						{{search_type}}
-						<div class="section_title"><h2>{{movie.name}}</h2></div>
+						
+
+						{% if search_type == "person" %}
+						{% for person in searchy %}
+						hasdasdasdsa
+						<ul><a href = "/person/{{person.id}}">
+						{{person.first_name}} {{person.last_name}}</a></ul>
+						{% endfor %}
+
+
+						{% elif search_type == "title" or search_type == "year" %}
+						{% for movie in searchy %}
+						<ul><a href = "/movies/{{movie.id}}">
+						{{movie.name}}</a></ul>
+						{% endfor %}
+						
+
+
+						{% endif %}
+
+
+						<div class="section_title"><h2></h2></div>
 						
 					</div>
 				</div>

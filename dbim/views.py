@@ -60,9 +60,38 @@ def yearPage(request,year):
 	return render(request,'movie.html',context)
 
 def searchPage(request,search_type,search_input):
-	context = {'search_input':search_input,
-					'search_type':search_type}
+	searchy = []
+	#if search_type == title, person,year
+	if(search_type == 'title'):
+		movie_title = search_input + '%'
+		searchy = Movie.objects.raw('SELECT * FROM dbim_movie WHERE name LIKE %s',[movie_title])
+		
+	elif(search_type == 'person'):
+
+		if ' ' in search_input:
+			name = search_input.split()
+			print(name[0])
+			print(name[1])
+		
+			first = name[0]
+			second = name[1]
+
+			
+			#if there is a name[1] then name[0],name[1]%
+			searchy = Person.objects.raw('SELECT * FROM dbim_person WHERE first_name LIKE %s and last_name LIKE %s',[first,second])
+		
+		#if there is no name[1] then name[0]%
+		else:
+			first = search_input + '%'
+			searchy = Person.objects.raw('SELECT * FROM dbim_person WHERE first_name LIKE %s',[first])
+
+	elif(search_type == 'year'):
+		searchy = Movie.objects.raw('SELECT * FROM dbim_movie WHERE release_date = ' + search_input)
 	
+
+	context = {'search_input':search_input,
+				'search_type':search_type,
+				'searchy':searchy}
 	return render(request,'searchresults.html',context)
 
 # def resultsPage(request):

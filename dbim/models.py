@@ -53,47 +53,6 @@ class MovieReviews(models.Model):
 	class Meta:
 		unique_together = (("movie_id", "review_id"),)
 
-'''
-complex query in moviePage to query name of director and writer (use Roles Table)
-complex query in personPage to query Movie and Role (use Roles Table)
-
-
-
-You have a text box on some page and when you click it, it sends a post request. 
-Then in that method for that path in views.py you do an if check to see if request was a post, 
-and if it was you can extract their input and perform query and the  redirect to a results page
-
-
-user will type in a string to the search bar, store that string, use that 
-string for the sql which selects things in the database, then somehow display
-it correctly
-
-Specific movie from search bar
-SELECT *
-FROM Movie 
-WHERE input_string = Movie.name
-
-All movies in the year search bar
-SELECT *
-FROM Movie
-WHERE Movie.release_date LIKE '%input_string'
-
-Show all the movie reviews for a certain movie
-SELECT * 
-FROM Movie,MovieReviews,Review
-WHERE MovieReviews.movie_id = Movie
-
-SELECT *
-FROM Movie
-WHERE id = (SELECT id
-			FROM MovieReviews, Review
-			WHERE )
-
-Movie pages also shows the average rating for that movie
-
-ProductionCompany will show all the productioncompany info
-
-'''
 
 
 

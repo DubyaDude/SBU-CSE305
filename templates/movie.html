@@ -49,13 +49,13 @@
 					{% for movie in movies %}
 						<div class="section_title"><h2>{{movie.name}}</h2></div>
 						<div class="about_text">
-							<p>Length, Genre {{movie.duration}}{{movie.genre}}</p>
-							<p>Description {{movie.description}}</p> 
-							<p>Release Date {{movie.release_date}}</p>
+							<p>Length, Genre: {{movie.duration}} {{movie.genre}}</p>
+							<p>Description: {{movie.description}}</p> 
+							<p>Release Date: {{movie.release_date}}</p>
 						</div>
 					{% endfor %}
 
-					<p>Production Company(s)</p>
+					<p>Production Company(s):</p>
 					{% for pc in productions %}
 					<ul><a href = "/production/{{pc.id}}">
 					{{pc.name}}</a></ul>
