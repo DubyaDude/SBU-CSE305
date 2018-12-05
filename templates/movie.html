@@ -102,23 +102,21 @@
 				
 				<!-- Team Item -->
 				
+				{% for r in ratings %}
 				<div class="col-xl-3 col-md-6">
 					<div class="team_item">
 						<div class="team_content text-center">
-						{% for r in ratings %}
-							<div class="team_name">Rating | Review Title {{r.rating}} stars {{r.title}}</div>
+							<div class="team_name">{{r.rating}} Stars | {{r.title}}</div>
 							<div class="team_title">{{r.content}} </div>
 							{% for name in username %}
 								{% if name.id == r.reviewer_id_id %}
 								<div class="team_title">-{{name.username}}</div>
 								{% endif %}
 							{% endfor %}
-						{% endfor %}
-
-
 						</div>
 					</div>
 				</div>
+				{% endfor %}
 				
 				<!-- Team Item -->
 				
