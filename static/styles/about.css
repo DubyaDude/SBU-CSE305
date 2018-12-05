@@ -856,7 +856,7 @@ section
 
 .about
 {
-	background: #FFFFFF;
+	background: #181818;
 	padding-top: 105px;
 	padding-bottom: 109px;
 }
@@ -872,23 +872,7 @@ section
 	transform: translate(-50%, -50%);
 	width: 100%;
 }
-.about_image_right
-{
-	position: absolute;
-	top: 50%;
-	left: 80%;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	width: 100%;
-}
 .about_image img
-{
-	max-width: 100%;
-}
-.about_image_right img
 {
 	max-width: 100%;
 }
@@ -1012,7 +996,7 @@ section
 .team
 {
 	width: 100%;
-	background: #FFFFFF;
+	background: #181818;
 	padding-top: 104px;
 	padding-bottom: 126px;
 }
@@ -1109,7 +1093,7 @@ section
 {
 	font-size: 18px;
 	font-weight: 600;
-	color: #2c2c2c;
+	color: #FFFFFF;
 	line-height: 1.2;
 }
 .team_title
