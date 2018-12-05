@@ -46,43 +46,44 @@
 				<!-- About Content -->
 				<div class="col-lg-6 order-lg-2 order-1">
 					<div class="about_content">
-					{% for movie in movies %}
-						<div class="section_title"><h2>{{movie.name}}</h2></div>
+						{% for movie in movies %}
+						<div class="section_title"><h2>{{movie.name}} ({{movie.release_date}})</h2></div>
 						<div class="about_text">
-							<p>Length, Genre: {{movie.duration}} {{movie.genre}}</p>
-							<p>Description: {{movie.description}}</p> 
-							<p>Release Date: {{movie.release_date}}</p>
+							<p>{{movie.duration}} | {{movie.genre}}</p>
+							<p>{{movie.description}}</p> 
 						</div>
-					{% endfor %}
+						{% endfor %}
 
-					<p>Production Company(s):</p>
-					{% for pc in productions %}
-					<ul><a href = "/production/{{pc.id}}">
-					{{pc.name}}</a></ul>
-					{% endfor %}
+						
+						<p> </p>
+						Production Company(s):
+						{% for pc in productions %}
+						<ul><a href = "/production/{{pc.id}}">
+						{{pc.name}}</a></ul>
+						{% endfor %}
 
+						<p> </p>
+						Directors(s):
+						{% for d in directors %}
+						<ul><a href = "/person/{{d.id}}">
+						{{d.first_name}} {{d.last_name}}</a></ul>
+						{% endfor %}
 
-					<p>Directors(s):</p>
-					{% for d in directors %}
-					<ul><a href = "/person/{{d.id}}">
-					{{d.first_name}} {{d.last_name}}</a></ul>
-					{% endfor %}
+						<p> </p>
+						Writer(s):
+						{% for w in writers %}
+						<ul><a href = "/person/{{w.id}}">
+						{{w.first_name}} {{w.last_name}}</a></ul>
+						{% endfor %}
 
-					<p>Writer(s):</p>
-					{% for w in writers %}
-					<ul><a href = "/person/{{w.id}}">
-					{{w.first_name}} {{w.last_name}}</a></ul>
-					{% endfor %}
-
-
-					<p>Actors:</p>
-					{% for c in actors %}
-					<ul><a href = "/person/{{c.id}}">{{c.first_name}} {{c.last_name}}</a></ul>
-					{% endfor %}
+						<p> </p>
+						Actors:
+						{% for c in actors %}
+						<ul><a href = "/person/{{c.id}}">{{c.first_name}} {{c.last_name}}</a></ul>
+						{% endfor %}
 
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

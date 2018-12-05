@@ -46,13 +46,14 @@
 					{% for person in persons %}
 						<div class="section_title"><h2>{{person.first_name}} {{person.last_name}}</h2></div>
 						<div class="about_text">
-							<p>Age (DOB) {{person.dob}}</p>
+							<p>Date Of Birth: {{person.dob}}</p>
 						</div>
 					{% endfor %}
 
-					<p>Involved In:</p>
+					<p> </p>
+					Involved In:
 					{% for mr in movieRoles %}
-					<ul><a href = "/movies/{{mr.id}}">{{mr.name}} </a>{{mr.role}}</ul>
+					<ul><a href = "/movies/{{mr.id}}">{{mr.name}} </a> | {{mr.role}}</ul>
 					{% endfor %}
 
 					</div>
